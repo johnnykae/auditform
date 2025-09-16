@@ -383,24 +383,26 @@
 
 
         form.addEventListener('submit', function (e) {
-            e.preventDefault();
-            const lead = {
-                name: document.getElementById('name').value,
-                store: document.getElementById('store').value,
-                platform: 'Website',
-                contact: document.getElementById('contact').value,
-                challenge: document.getElementById('challenge').value,
-                traffic: document.getElementById('traffic').value || '-',
-                date: new Date().toLocaleString(),
-                user: window.navigator.userAgent
-            };
-            console.log(lead.user);
+      e.preventDefault();
+      fetch('https://ipapi.co/json/')
+        .then(res => res.json())
+        .then(location => {
+          const lead = {
+            name: document.getElementById('name').value,
+            store: document.getElementById('store').value,
+            contact: document.getElementById('contact').value,
+            challenge: document.getElementById('challenge').value,
+            traffic: document.getElementById('traffic').value || '-',
+            city: location.city,
+            region: location.region,
+            country: location.country_name,
+            date: new Date().toLocaleString()
+          };
 
-            // Save to localStorage
-            leads.push(lead);
-            localStorage.setItem('leads', JSON.stringify(leads));
-            renderLeads();
-
+          leads.push(lead);
+          localStorage.setItem('leads', JSON.stringify(leads));
+          renderLeads();
+            
             // Confirmation alert
             alert(`Thanks ${lead.name}! We'll reach out shortly with your store audit report.`);
             form.reset();
@@ -415,3 +417,4 @@
 </body>
 
 </html>
+
