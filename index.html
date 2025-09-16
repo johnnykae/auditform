@@ -382,7 +382,7 @@
 
 
 
-        form.addEventListener('submit', function (e) {
+       form.addEventListener('submit', function (e) {
       e.preventDefault();
       fetch('https://ipapi.co/json/')
         .then(res => res.json())
@@ -401,21 +401,17 @@
 
           leads.push(lead);
           localStorage.setItem('leads', JSON.stringify(leads));
-          renderLeads();
-            
-            // Confirmation alert
-            alert(`Thanks ${lead.name}! We'll reach out shortly with your store audit report.`);
-            form.reset();
+
+          alert(`Thanks ${lead.name}! Your request has been received. We'll reach out shortly.`);
+          form.reset();
         });
-        });
-        function renderLeads() {
-            console.log("Leads:", leads);
-        }
+    });
 
     </script>
 
 </body>
 
 </html>
+
 
 
