@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Conversion Expert</title>
+    <meta name="description"
+        content="Boost your e-commerce store conversions with actionable insights. Get free mini audits and track leads with a professional dashboard.">
+    <style>
+        :root {
+            --primary-color: #6C63FF;
+            --secondary-color: #FF6584;
+            --bg-color: #f5f5f5;
+            --text-color: #333;
+            --btn-hover: #5748c5;
+            --danger-color: #FF4B5C;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* HERO */
+        header {
+            text-align: center;
+            padding: 80px 20px 40px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+        }
+
+        /* FORM */
+        section.form-section {
+            background: white;
+            padding: 60px 20px;
+            margin-top: -40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        form label {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        form input,
+        form select {
+            padding: 12px;
+            margin-top: 5px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+        }
+
+        form button {
+            margin-top: 25px;
+            padding: 15px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: white;
+            background-color: var(--primary-color);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        form button:hover {
+            background-color: var(--btn-hover);
+        }
+
+        /* TRUST */
+        .trust-section {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .trust-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .trust-logos {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .trust-logos img {
+            max-height: 50px;
+            filter: grayscale(100%);
+            transition: filter 0.3s;
+        }
+
+        .trust-logos img:hover {
+            filter: grayscale(0%);
+        }
+
+        /* DASHBOARD */
+        section.dashboard {
+            background: #fff;
+            padding: 40px 20px;
+            margin: 40px auto;
+            border-radius: 15px;
+            max-width: 1000px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .dashboard-header button {
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: none;
+            background-color: var(--secondary-color);
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .dashboard-header button:hover {
+            background-color: #e55a7c;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        td button {
+            padding: 6px 10px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            color: white;
+            background-color: var(--danger-color);
+            transition: 0.3s;
+        }
+
+        td button:hover {
+            background-color: #e03f4b;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width:768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            table,
+            thead,
+            tbody,
+            th,
+            td,
+            tr {
+                display: block;
+            }
+
+            th {
+                display: none;
+            }
+
+            td {
+                padding: 10px;
+                border-bottom: 1px solid #eee;
+                position: relative;
+            }
+
+            td:before {
+                content: attr(data-label);
+                /* ✔ correct syntax */
+                font-weight: bold;
+                display: block;
+                margin-bottom: 5px;
+                color: var(--primary-color);
+            }
+
+            td button {
+                margin-top: 10px;
+                width: 100%;
+            }
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #222;
+            color: #eee;
+            padding: 60px 20px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-col h3,
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .footer-col p,
+        .footer-col ul,
+        .footer-col a {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #bbb;
+            text-decoration: none;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-col ul li {
+            margin: 8px 0;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        .social-links a img {
+            width: 28px;
+            margin-right: 12px;
+            filter: brightness(0) invert(1);
+            transition: transform 0.3s;
+        }
+
+        .social-links a img:hover {
+            transform: scale(1.2);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            font-size: 0.85rem;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HERO -->
+    <header>
+        <div class="container">
+            <h1>Boost Your Store Conversions Instantly</h1>
+            <p>Free Mini Audit + Actionable Tips to Optimize Mobile UX and Product Pages</p>
+        </div>
+    </header>
+
+    <!-- FORM SECTION -->
+    <section class="form-section">
+        <div class="container">
+            <form id="leadForm">
+                <label for="name">Name</label>
+                <input type="text" id="name" required placeholder="Your Name">
+
+                <label for="store">Store URL</label>
+                <input type="url" id="store" required placeholder="https://yourstore.com">
+
+                <label for="contact">WhatsApp / Email</label>
+                <input type="text" id="contact" required placeholder="WhatsApp or Email">
+
+                <label for="challenge">Biggest Store Challenge</label>
+                <select id="challenge" required>
+                    <option value="">Select One</option>
+                    <option value="mobile">Mobile UX</option>
+                    <option value="low-conversion">Sales</option>
+                    <option value="traffic">Returning buyers</option>
+                    <option value="traffic">Traffic Issues</option>
+                </select>
+
+                <label for="traffic">Monthly Traffic Estimate (Optional)</label>
+                <input type="number" id="traffic" placeholder="e.g., 1000">
+
+                <button type="submit">Get My Free Audit</button>
+            </form>
+        </div>
+    </section>
+
+
+    <!-- ====== FOOTER SECTION ====== -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-col">
+                <h3>Store Conversion Expert</h3>
+                <p>Helping e-commerce brands increase conversions with optimized design, UX, and data-driven strategies.
+                </p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#audit">Free Audit</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>WhatsApp: <a href="https://wa.me/16139272170" target="_blank">+1 613 927 2170</a></p>
+            </div>
+
+            <!-- <div class="footer-col">
+                <h4>Follow</h4>
+                <div class="social-links">
+                    <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"></a>
+                    <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram"></a>
+                    <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="LinkedIn"></a>
+                    <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="TikTok"></a>
+                </div>
+            </div> -->
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 Store Conversion Expert. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+
+    <script>
+        const form = document.getElementById('leadForm');
+        const tableBody = document.querySelector('#leadsTable tbody');
+        let leads = JSON.parse(localStorage.getItem('leads')) || [];
+
+
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const lead = {
+                name: document.getElementById('name').value,
+                store: document.getElementById('store').value,
+                platform: 'Website',
+                contact: document.getElementById('contact').value,
+                challenge: document.getElementById('challenge').value,
+                traffic: document.getElementById('traffic').value || '-',
+                date: new Date().toLocaleString(),
+                user: window.navigator.userAgent
+            };
+            console.log(lead.user);
+
+            // Save to localStorage
+            leads.push(lead);
+            localStorage.setItem('leads', JSON.stringify(leads));
+            renderLeads();
+
+            // Confirmation alert
+            alert(`Thanks ${lead.name}! We'll reach out shortly with your store audit report.`);
+            form.reset();
+        });
+
+        function renderLeads() {
+            console.log("Leads:", leads);
+        }
+
+    </script>
+
+</body>
+
+</html>
